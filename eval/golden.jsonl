@@ -1,0 +1,16 @@
+{"id": "q01", "question": "What is the power consumption of the SHA-256 accelerator?", "expected_keywords": ["12 mW", "500 MHz"], "expected_chunk_contains": "12 mW at 500 MHz"}
+{"id": "q02", "question": "How does the FIFO handle metastability?", "expected_keywords": ["2-stage synchronizer", "Gray-code"], "expected_chunk_contains": "2-stage synchronizer"}
+{"id": "q03", "question": "What is the read latency of the AXI4-Lite slave?", "expected_keywords": ["2 cycles"], "expected_chunk_contains": "Read latency is 2 cycles"}
+{"id": "q04", "question": "What is the setup time for write data on AXI4-Lite?", "expected_keywords": ["0.5 ns"], "expected_chunk_contains": "setup time for write data is 0.5 ns"}
+{"id": "q05", "question": "What is the address width of the AXI4-Lite slave?", "expected_keywords": ["32-bit"], "expected_chunk_contains": "32-bit address"}
+{"id": "q06", "question": "Which standard does the SHA-256 accelerator comply with?", "expected_keywords": ["FIPS 180-4"], "expected_chunk_contains": "FIPS 180-4"}
+{"id": "q07", "question": "When is clock gating applied in the SHA-256 accelerator?", "expected_keywords": ["4 cycles"], "expected_chunk_contains": "4 cycles"}
+{"id": "q08", "question": "What is the default depth of the CDC FIFO?", "expected_keywords": ["16 entries"], "expected_chunk_contains": "16 entries"}
+{"id": "q09", "question": "Why use Gray-code in the CDC FIFO?", "expected_keywords": ["multi-bit transitions", "synchronization"], "expected_chunk_contains": "Gray-code"}
+{"id": "q10", "question": "Which keyword should be used for sequential logic in modern SystemVerilog?", "expected_keywords": ["always_ff"], "expected_chunk_contains": "always_ff"}
+{"id": "q11", "question": "Why should always @* be avoided?", "expected_keywords": ["statically checked"], "expected_chunk_contains": "statically checked"}
+{"id": "q12", "question": "What assignment operator should be used inside always_ff?", "expected_keywords": ["non-blocking", "<="], "expected_chunk_contains": "non-blocking assignment"}
+{"id": "q13", "question": "What is a reset synchronizer?", "expected_keywords": ["two flip-flops", "deassertion"], "expected_chunk_contains": "two flip-flops"}
+{"id": "q14", "question": "What energy does the hash module consume?", "expected_keywords": ["12 mW"], "expected_chunk_contains": "12 mW"}
+{"id": "q15", "question": "What is at register offset 0x04?", "expected_keywords": ["STATUS"], "expected_chunk_contains": "STATUS"}
+{"id": "q16", "question": "Tell me about NVIDIA H100 pricing", "expected_keywords": [], "expected_chunk_contains": null, "should_refuse": true}

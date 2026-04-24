@@ -1,0 +1,31 @@
+[project]
+name = "soc-design-ai-copilot"
+version = "0.1.0"
+description = "RAG + Agent assistant for SoC design documentation, with quantitative eval pipeline."
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+dependencies = [
+    "langchain>=1.0",
+    "langchain-classic",
+    "langchain-openai",
+    "langchain-community",
+    "langchain-chroma",
+    "langchain-text-splitters",
+    "langgraph",
+    "python-dotenv",
+    "pypdf",
+    "rank-bm25",
+    "flashrank",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+api = ["fastapi", "uvicorn[standard]", "sse-starlette"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["src*"]
