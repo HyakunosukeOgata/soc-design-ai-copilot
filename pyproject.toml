@@ -1,10 +1,11 @@
 [project]
 name = "soc-design-ai-copilot"
 version = "0.1.0"
-description = "RAG + Agent assistant for SoC design documentation, with quantitative eval pipeline."
-requires-python = ">=3.11"
+description = "RAG + Agent assistant for SoC/RTL designers, with retrieval & faithfulness eval pipeline."
 readme = "README.md"
+requires-python = ">=3.11"
 license = { text = "MIT" }
+authors = [{ name = "Ogata" }]
 dependencies = [
     "langchain>=1.0",
     "langchain-classic",
@@ -17,15 +18,26 @@ dependencies = [
     "pypdf",
     "rank-bm25",
     "flashrank",
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic-settings",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "pytest-asyncio", "ruff"]
-api = ["fastapi", "uvicorn[standard]", "sse-starlette"]
+dev = ["pytest", "pytest-asyncio", "ruff", "ipykernel"]
+
+[project.scripts]
+copilot-ingest = "soc_copilot.rag.ingest:main"
+copilot-eval-retrieval = "soc_copilot.eval.run_retrieval:main"
+copilot-eval-faithfulness = "soc_copilot.eval.run_faithfulness:main"
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["src*"]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
