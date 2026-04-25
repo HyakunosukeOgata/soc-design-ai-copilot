@@ -24,12 +24,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "pytest-asyncio", "ruff", "ipykernel"]
+dev = ["pytest", "pytest-asyncio", "ruff", "ipykernel", "httpx"]
 
 [project.scripts]
 copilot-ingest = "soc_copilot.rag.ingest:main"
 copilot-eval-retrieval = "soc_copilot.eval.run_retrieval:main"
 copilot-eval-faithfulness = "soc_copilot.eval.run_faithfulness:main"
+copilot-serve = "soc_copilot.api.cli:serve"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]

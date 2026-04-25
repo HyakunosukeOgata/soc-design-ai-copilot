@@ -40,6 +40,26 @@ python -m soc_copilot.demos.rag_demo
 # Run evals
 python -m soc_copilot.eval.run_retrieval
 python -m soc_copilot.eval.run_faithfulness
+
+# Run the FastAPI service
+python -m uvicorn soc_copilot.api.main:app --reload
+# -> http://localhost:8000/docs   (interactive Swagger UI)
+```
+
+### API endpoints
+```bash
+# Ask a question (sync)
+curl -X POST http://localhost:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question":"How does the FIFO handle metastability?"}'
+
+# Stream tokens via SSE
+curl -N -X POST http://localhost:8000/ask/stream \
+  -H "Content-Type: application/json" \
+  -d '{"question":"What is the read latency of the AXI4-Lite slave?"}'
+
+# Health check
+curl http://localhost:8000/health
 ```
 
 ## Project structure
@@ -49,6 +69,10 @@ src/soc_copilot/
 │   ├── ingest.py       # Load + split + embed -> Chroma
 │   ├── retriever.py    # Semantic / BM25 / Hybrid / Hybrid+Rerank factory
 │   └── chain.py        # LCEL chain: question -> retriever -> LLM -> parser
+├── api/
+│   ├── main.py         # FastAPI app (/ask, /ask/stream, /health)
+│   ├── schemas.py      # Pydantic request/response models
+│   └── cli.py          # uvicorn launcher
 ├── eval/
 │   ├── run_retrieval.py    # Recall@k + MRR
 │   └── run_faithfulness.py # LLM-as-judge faithfulness + refusal
@@ -58,6 +82,7 @@ src/soc_copilot/
 data/sample_spec.md     # Sample SoC spec (AXI4-Lite, SHA-256, CDC FIFO)
 eval/golden.jsonl       # 16 golden Q&A
 eval/reports/           # Generated eval reports
+tests/test_api.py       # API smoke tests
 ```
 
 ## Evaluation results
